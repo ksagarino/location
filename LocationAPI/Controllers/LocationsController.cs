@@ -13,7 +13,6 @@ namespace LocationAPI.Controllers
 {
     public class LocationsController : ApiController
     {
-        //private ILocationService LocationsRepository = new LocationRepository(new LocationDBEntities());
 
         public LocationsController(ILocationService locationRepository)
         {
@@ -49,8 +48,6 @@ namespace LocationAPI.Controllers
         public HttpResponseMessage Get(int id)
         {
             
-
-            
             var entity = _LocationsRepository.GetByID(id);
 
             if(entity == null)
@@ -62,6 +59,7 @@ namespace LocationAPI.Controllers
             {
                 Location location = new Location()
                 {
+                    ID = entity.ID,
                     Name = entity.Name,
                     Address = entity.Address,
                     City = entity.City,
@@ -72,7 +70,6 @@ namespace LocationAPI.Controllers
                 return Request.CreateResponse(HttpStatusCode.OK, location);
             }
 
-            
         }
 
         public HttpResponseMessage Post([FromBody] Location location)
@@ -127,6 +124,5 @@ namespace LocationAPI.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
         }
-
     }
 }
