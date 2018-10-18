@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationService", "LocationAPI\LocationService.csproj", "{29DEBAAC-7F09-49B8-81C1-468C34B9F4B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocationDataAccess", "LocationDataAccess\LocationDataAccess.csproj", "{CA9944B5-711D-4141-9B2A-3CF101ACBBF7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{29DEBAAC-7F09-49B8-81C1-468C34B9F4B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29DEBAAC-7F09-49B8-81C1-468C34B9F4B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29DEBAAC-7F09-49B8-81C1-468C34B9F4B8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA9944B5-711D-4141-9B2A-3CF101ACBBF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA9944B5-711D-4141-9B2A-3CF101ACBBF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA9944B5-711D-4141-9B2A-3CF101ACBBF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA9944B5-711D-4141-9B2A-3CF101ACBBF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

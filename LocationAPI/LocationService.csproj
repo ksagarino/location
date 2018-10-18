@@ -341,12 +341,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LocationDataAccess\LocationDataAccess.csproj">
-      <Project>{ca9944b5-711d-4141-9b2a-3cf101acbbf7}</Project>
-      <Name>LocationDataAccess</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
