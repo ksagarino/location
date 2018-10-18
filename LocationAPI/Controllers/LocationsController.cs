@@ -14,6 +14,7 @@ namespace LocationAPI.Controllers
     {
         private ILocationService LocationsRepository = new LocationRepository(new LocationDBEntities());
 
+        
       
         public IEnumerable<Location> Get()
         {
