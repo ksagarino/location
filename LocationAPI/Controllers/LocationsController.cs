@@ -8,18 +8,26 @@ using LocationAPI.Models;
 using LocationAPI.Services;
 using LocationAPI.Repositories;
 
+
 namespace LocationAPI.Controllers
 {
     public class LocationsController : ApiController
     {
-        private ILocationService LocationsRepository = new LocationRepository(new LocationDBEntities());
+        //private ILocationService LocationsRepository = new LocationRepository(new LocationDBEntities());
+
+        public LocationsController(ILocationService locationRepository)
+        {
+            _LocationsRepository = locationRepository;
+        }
+
+        private ILocationService _LocationsRepository;
 
         public IEnumerable<Location> Get()
         {
             
             List<Location> locations = new List<Location>();
             
-            var results = LocationsRepository.Get().OrderBy(l=> l.Name).ToList();
+            var results = _LocationsRepository.Get().OrderBy(l=> l.Name).ToList();
 
             foreach(var result in results)
             {
@@ -43,7 +51,7 @@ namespace LocationAPI.Controllers
             
 
             
-            var entity = LocationsRepository.GetByID(id);
+            var entity = _LocationsRepository.GetByID(id);
 
             if(entity == null)
             {
@@ -71,8 +79,8 @@ namespace LocationAPI.Controllers
         {
             try
             {
-                
-                LocationsRepository.Insert(location);
+
+                _LocationsRepository.Insert(location);
 
                 var message = Request.CreateResponse(HttpStatusCode.Created, location);
                 message.Headers.Location = new Uri(Request.RequestUri + location.ID.ToString());
@@ -93,7 +101,7 @@ namespace LocationAPI.Controllers
             try
             {
                 
-                var entity = LocationsRepository.GetByID(id);
+                var entity = _LocationsRepository.GetByID(id);
 
                 if(entity == null)
                 {
@@ -108,7 +116,7 @@ namespace LocationAPI.Controllers
                     entity.Province = location.Address;
                     entity.IsDeleted = location.IsDeleted;
 
-                    LocationsRepository.Update(entity);
+                    _LocationsRepository.Update(entity);
 
                     return Request.CreateResponse(HttpStatusCode.OK, entity);
                 }

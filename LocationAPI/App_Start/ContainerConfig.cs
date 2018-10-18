@@ -1,10 +1,11 @@
 ﻿
-using System.Linq;
-
+using System.Web.Mvc;
 using Autofac;
-
-using LocationAPI.Models;
+using Autofac.Integration.WebApi;
+using Autofac.Integration.Mvc;
 using System.Reflection;
+using System.Web.Http;
+using LocationAPI.Models;
 
 namespace LocationAPI
 {
@@ -14,12 +15,19 @@ namespace LocationAPI
         {
             var builder = new ContainerBuilder();
 
+            var config = GlobalConfiguration.Configuration;
+
             builder.RegisterType<LocationDBEntities>().InstancePerRequest();
+            builder.RegisterGeneric(typeof(Repositories.Repository<>)).As(typeof(Services.IRepositoryService<>));
+            builder.RegisterType<Repositories.LocationRepository>().As<Services.ILocationService>();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
+            var container = builder.Build();
 
-            //builder.RegisterType<Repositories.Repository<typeof()>>.As<Services.IRepositoryService<TEntity where: TEntity: class>>();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-            builder.Build();
+            config.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container);
+
         }
     }
 }
