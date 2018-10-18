@@ -25,6 +25,7 @@ namespace LocationAPI.Controllers
             {
                 Location location = new Location()
                 {
+                    ID = result.ID,
                     Name = result.Name,
                     Address = result.Address,
                     City = result.City,
