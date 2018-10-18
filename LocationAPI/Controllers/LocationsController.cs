@@ -14,13 +14,11 @@ namespace LocationAPI.Controllers
     {
         private ILocationService LocationsRepository = new LocationRepository(new LocationDBEntities());
 
-        
-      
         public IEnumerable<Location> Get()
         {
             
             List<Location> locations = new List<Location>();
-           
+            
             var results = LocationsRepository.Get().OrderBy(l=> l.Name).ToList();
 
             foreach(var result in results)
@@ -42,46 +40,45 @@ namespace LocationAPI.Controllers
         public HttpResponseMessage Get(int id)
         {
             
-            using (LocationDBEntities entities = new LocationDBEntities())
+
+            
+            var entity = LocationsRepository.GetByID(id);
+
+            if(entity == null)
             {
-                var entity = entities.spGetAllLocationsById(id).FirstOrDefault();
-
-                if(entity == null)
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Location with id = " + id.ToString() + " not found.");
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Location with id = " + id.ToString() + " not found.");
                    
-                }
-                else
-                {
-                    Location location = new Location()
-                    {
-                        Name = entity.Name,
-                        Address = entity.Address,
-                        City = entity.City,
-                        Province = entity.Province
-
-                    };
-
-                    return Request.CreateResponse(HttpStatusCode.OK, location);
-                }
-
             }
+            else
+            {
+                Location location = new Location()
+                {
+                    Name = entity.Name,
+                    Address = entity.Address,
+                    City = entity.City,
+                    Province = entity.Province
+
+                };
+
+                return Request.CreateResponse(HttpStatusCode.OK, location);
+            }
+
+            
         }
 
         public HttpResponseMessage Post([FromBody] Location location)
         {
             try
             {
-                using (LocationDBEntities entities = new LocationDBEntities())
-                {
-                    var result = entities.spInsertLocation(location.Name, location.Address, location.City, location.Province);
+                
+                LocationsRepository.Insert(location);
 
-                    var message = Request.CreateResponse(HttpStatusCode.Created, location);
-                    message.Headers.Location = new Uri(Request.RequestUri + location.ID.ToString());
+                var message = Request.CreateResponse(HttpStatusCode.Created, location);
+                message.Headers.Location = new Uri(Request.RequestUri + location.ID.ToString());
 
-                    return message;
+                return message;
 
-                }
+                
             }
             catch(Exception ex)
             {
@@ -94,21 +91,27 @@ namespace LocationAPI.Controllers
         {
             try
             {
-                using(LocationDBEntities entities = new LocationDBEntities())
+                
+                var entity = LocationsRepository.GetByID(id);
+
+                if(entity == null)
                 {
-                    var entity = entities.spGetAllLocationsById(id).FirstOrDefault();
-
-                    if(entity != null)
-                    {
-                        entities.spUpdateLocation(id, location.Name, location.Address, location.City, location.Province);
-
-                        return Request.CreateResponse(HttpStatusCode.OK, entity);
-                    }
-                    else
-                    {
-                        return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Location with id = " + id.ToString() + " not found.");
-                    }
+                   
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Location with id = " + id.ToString() + " not found.");
                 }
+                else
+                {
+                    entity.Name = location.Name;
+                    entity.Address = location.Address;
+                    entity.City = location.Address;
+                    entity.Province = location.Address;
+                    entity.IsDeleted = location.IsDeleted;
+
+                    LocationsRepository.Update(entity);
+
+                    return Request.CreateResponse(HttpStatusCode.OK, entity);
+                }
+              
             }
             catch(Exception ex)
             {

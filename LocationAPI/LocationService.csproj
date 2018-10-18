@@ -203,28 +203,22 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Location.cs">
-      <DependentUpon>LocationModel.tt</DependentUpon>
+      <DependentUpon>LocationDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LocationModel.Context.cs">
+    <Compile Include="Models\LocationDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LocationModel.Context.tt</DependentUpon>
+      <DependentUpon>LocationDataModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LocationModel.cs">
+    <Compile Include="Models\LocationDataModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LocationModel.tt</DependentUpon>
+      <DependentUpon>LocationDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LocationModel.Designer.cs">
+    <Compile Include="Models\LocationDataModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LocationModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\spGetAllLocationsById_Result.cs">
-      <DependentUpon>LocationModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\spGetAllLocations_Result.cs">
-      <DependentUpon>LocationModel.tt</DependentUpon>
+      <DependentUpon>LocationDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\LocationRepository.cs" />
@@ -242,15 +236,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\LocationModel.Context.tt">
+    <Content Include="Models\LocationDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LocationModel.edmx</DependentUpon>
-      <LastGenOutput>LocationModel.Context.cs</LastGenOutput>
+      <DependentUpon>LocationDataModel.edmx</DependentUpon>
+      <LastGenOutput>LocationDataModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\LocationModel.tt">
+    <Content Include="Models\LocationDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LocationModel.edmx</DependentUpon>
-      <LastGenOutput>LocationModel.cs</LastGenOutput>
+      <DependentUpon>LocationDataModel.edmx</DependentUpon>
+      <LastGenOutput>LocationDataModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -276,12 +270,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\LocationModel.edmx">
+    <EntityDeploy Include="Models\LocationDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LocationModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>LocationDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\LocationModel.edmx.diagram">
-      <DependentUpon>LocationModel.edmx</DependentUpon>
+    <Content Include="Models\LocationDataModel.edmx.diagram">
+      <DependentUpon>LocationDataModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
