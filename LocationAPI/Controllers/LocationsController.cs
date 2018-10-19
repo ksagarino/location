@@ -11,6 +11,7 @@ using LocationAPI.Repositories;
 
 namespace LocationAPI.Controllers
 {
+   //[BasicAuthentication]
     public class LocationsController : ApiController
     {
 

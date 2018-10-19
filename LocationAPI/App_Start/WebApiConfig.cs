@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿
 using System.Web.Http;
-using Autofac;
-using LocationAPI.Repositories;
-using LocationAPI.Services;
-using LocationAPI.Models;
-using System.Reflection;
+
+
 
 namespace LocationAPI
 {
@@ -28,7 +23,8 @@ namespace LocationAPI
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             config.Formatters.JsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
 
-            
+            //EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
+            //config.EnableCors(cors);
 
 
         }

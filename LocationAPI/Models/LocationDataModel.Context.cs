@@ -26,5 +26,6 @@ namespace LocationAPI.Models
         }
     
         public virtual DbSet<Location> Location { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }
