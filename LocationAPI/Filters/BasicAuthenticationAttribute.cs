@@ -9,14 +9,15 @@ using System.Threading;
 using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
+using LocationAPI.Helpers;
 
-namespace LocationAPI
+namespace LocationAPI.Filters
 {
     public class BasicAuthenticationAttribute : AuthorizationFilterAttribute
     {
         public override void OnAuthorization(HttpActionContext actionContext)
         {
-            if(actionContext.Request.Headers == null)
+            if(actionContext.Request.Headers.Authorization == null)
             {
                 actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
             }

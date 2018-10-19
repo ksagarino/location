@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using LocationAPI.Models;
 
-namespace LocationAPI
+namespace LocationAPI.Helpers
 {
     public class LocationSecurity
     {

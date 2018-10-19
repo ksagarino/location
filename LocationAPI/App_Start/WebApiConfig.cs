@@ -1,6 +1,6 @@
 ﻿
 using System.Web.Http;
-
+using System.Web.Http.Cors;
 
 
 namespace LocationAPI
@@ -23,8 +23,8 @@ namespace LocationAPI
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             config.Formatters.JsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
 
-            //EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
-            //config.EnableCors(cors);
+            EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
 
 
         }

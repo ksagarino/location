@@ -6,12 +6,11 @@ using System.Net.Http;
 using System.Web.Http;
 using LocationAPI.Models;
 using LocationAPI.Services;
-using LocationAPI.Repositories;
-
+using LocationAPI.Filters;
 
 namespace LocationAPI.Controllers
 {
-   //[BasicAuthentication]
+    [BasicAuthentication]
     public class LocationsController : ApiController
     {
 
