@@ -259,3 +259,7 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/LocationAPI/Content/bootstrap-grid.css
+/LocationAPI/Scripts/bootstrap.bundle.min.js.map
+/LocationAPI/Scripts/bootstrap.bundle.min.js
+/LocationAPI/Scripts/bootstrap.bundle.js.map
